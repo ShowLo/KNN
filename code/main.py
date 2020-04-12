@@ -53,9 +53,9 @@ def main():
     distance_method = 'Manhattan'
     weight_method = 'Normalize'
     usingKDTree = True
-    #testLabels_KNN = KNN(trainPhotos, trainLabels, testPhotos, k, distance_method)
+    testLabels_KNN = KNN(trainPhotos, trainLabels, testPhotos, k)
     #testLabels_KNN = KNN(trainPhotos, trainLabels, testPhotos, k, distance_method, weight_method = weight_method)
-    testLabels_KNN = KNN(trainPhotos, trainLabels, testPhotos, k, distance_method, weight_method = weight_method, usingKDTree = usingKDTree)
+    #testLabels_KNN = KNN(trainPhotos, trainLabels, testPhotos, k, distance_method, weight_method = weight_method, usingKDTree = usingKDTree)
 
     testLabels = np.array(testLabels)
     testLabels_KNN = np.array(testLabels_KNN)

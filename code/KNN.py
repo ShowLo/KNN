@@ -15,19 +15,12 @@ def compareDistance(d, kMinDistances, trainLabel, kLabels):
     trainLabel : 当前测试数据的标签
     kLabels : 维护k个最小距离对应的标签列表
     '''
-    for i in range(len(kMinDistances)):
-        #在距离列表中找到一个比当前距离小的就停下来
-        if d > kMinDistances[i]:
-            break
-        #遍历整个距离列表都没找到比当前距离小的，说明当前距离是最小的
-        elif i == len(kMinDistances) - 1:
-            i += 1
-    if i > 0:
+    maxDis = max(kMinDistances)
+    maxIdx = kMinDistances.index(maxDis)
+    if d < maxDis:
         #将当前距离及对应的标签加入到距离列表及标签列表中去
-        kMinDistances[0: i - 1] = kMinDistances[1 : i]
-        kMinDistances[i - 1] = d
-        kLabels[0 : i - 1] = kLabels[1 : i]
-        kLabels[i - 1] = trainLabel
+        kMinDistances[maxIdx] = d
+        kLabels[maxIdx] = trainLabel
 
 def weight(distances, weight_method = None):
     '''

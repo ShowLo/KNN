@@ -7,7 +7,7 @@ def euclideanDistance(d1, d2):
     计算欧氏距离
     d1,d2 : 两个向量
     '''
-    return ((d1 - d2)**2).sum()
+    return np.sqrt(((d1 - d2)**2).sum())
 
 
 def manhattanDistance(d1, d2):

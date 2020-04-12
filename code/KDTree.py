@@ -75,20 +75,12 @@ class KDTree(object):
         node : 当前节点
         kNodes : 与k个最小距离对应的k个节点
         '''
-        k = len(kMinDistances)
-        for i in range(k):
-            #在距离列表中找到一个比当前距离小的就停下来
-            if distance > kMinDistances[i]:
-                break
-            #遍历整个距离列表都没找到比当前距离小的，说明当前距离是最小的
-            elif i == len(kMinDistances) - 1:
-                i += 1
-        if i > 0:
+        maxDis = max(kMinDistances)
+        maxIdx = kMinDistances.index(maxDis)
+        if distance < maxDis:
             #将当前距离及对应的节点加入到距离列表及标签列表中去
-            kMinDistances[0: i - 1] = kMinDistances[1 : i]
-            kMinDistances[i - 1] = distance
-            kNodes[0 : i - 1] = kNodes[1 : i]
-            kNodes[i - 1] = node
+            kMinDistances[maxIdx] = distance
+            kNodes[maxIdx] = node
 
     def buildSearchPath(self, node, nodesList, vector, kMinDistances, kNodes, distance_method):
         '''
